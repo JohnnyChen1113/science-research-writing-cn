@@ -47,3 +47,40 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# Bookdown files
+_book/
+_bookdown_files/
+*.log
+*.aux
+*.out
+*.toc
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.rds
+
+# LaTeX files
+*.tex.backup
+*.figlist
+*.makefile
+*.fls
+*.fdb_latexmk
+*.dpth
+*.md5
+*.auxlock
+
+# R files
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Output files that shouldn't be tracked
+*.pdf
+*.epub
