@@ -1,0 +1,69 @@
+---
+title: "学术论文写作指南"
+subtitle: "Science Research Writing 中文翻译版"
+author: "Hilary Glasman-Deal 著 / 陈俊浩 译"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib]
+biblio-style: apalike
+link-citations: yes
+colorlinks: yes
+lot: yes
+lof: yes
+fontsize: 12pt
+geometry: [a4paper, tmargin=2.5cm, bmargin=2.5cm, lmargin=3cm, rmargin=3cm]
+description: |
+  这是《Science Research Writing》一书的中文翻译版本，
+  旨在帮助中文读者掌握学术论文写作的要领和技巧。
+github-repo: your-username/science-research-writing-cn
+url: 'https://your-username.github.io/science-research-writing-cn/'
+---
+
+# 前言 {-}
+
+本书旨在帮助非英语母语的研究人员和学生掌握学术论文写作的核心技能。无论你是博士生、博士后研究员，还是资深研究人员，都能从本书中获得实用的写作指导。
+
+## 关于原书 {-}
+
+《Science Research Writing》由 Hilary Glasman-Deal 撰写，是一本专注于科学研究论文写作的实用指南。原书以其清晰的结构、实用的建议和丰富的实例而广受好评，已成为全球众多大学和研究机构的推荐教材。
+
+## 本书结构 {-}
+
+本书共分为以下几个部分：
+
+- **第1章：介绍** - 学术写作的基本原则和重要性
+- **第2章：开始写作** - 写作前的准备工作和规划
+- **第3章：写作过程** - 具体的写作步骤和技巧
+- （后续章节根据原书内容添加）
+
+## 翻译说明 {-}
+
+本翻译版本遵循以下原则：
+
+1. **忠实原文**：保持原文的逻辑结构和核心观点
+2. **适应本土**：调整表达方式以符合中文学术写作习惯  
+3. **术语统一**：建立一致的专业术语翻译对照表
+4. **实例本土化**：在可能的情况下补充适合中文读者的案例
+
+重要的英文术语会在首次出现时给出中英文对照，如：研究问题（research question）、文献综述（literature review）等。
+
+## 致谢 {-}
+
+感谢原作者 Hilary Glasman-Deal 的卓越工作，为学术写作领域贡献了这部经典著作。
+
+本翻译工作得到了...(暂时还是一拍脑袋的结果, 希望先翻译个几章之后再一点点地告诉身边的人)
+
+## 版权声明 {-}
+
+本翻译版本仅供学习交流使用。如需商业用途，请联系原版权方。翻译中如有错误或不当之处，请通过 GitHub Issues 反馈，我们将及时改正。
+
+原书版权归 Hilary Glasman-Deal 及其出版社所有。
+
+---
+
+**关于译者**
+
+Junhao Chen, 现在还是一个PhD candidate, 在准备写博士的毕业论文, 有一天脑袋一拍, 觉得可以以翻译这本书为契机, 提升一下自己写论文的水平和能力. 
+之前看罗振宇的一期访谈, 人最重要的一个能力, 就是给自己出题. 找个事儿, 然后干下去. 所以, 干一干吧.
+

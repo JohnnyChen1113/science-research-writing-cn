@@ -1,0 +1,41 @@
+bookdown::gitbook:
+  css: style.css
+  split_by: chapter
+  config:
+    toc:
+      collapse: subsection
+      scroll_highlight: yes
+      before: |
+        <li><a href="./">学术论文写作指南</a></li>
+        <li><small>Science Research Writing 中文版</small></li>
+      after: |
+        <li><a href="https://github.com/your-username/science-research-writing-cn" target="blank">查看源码</a></li>
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Powered by bookdown</a></li>
+    edit: https://github.com/your-username/science-research-writing-cn/edit/main/%s
+    download: ["pdf", "epub"]
+    sharing:
+      github: yes
+      facebook: no
+      twitter: yes
+      linkedin: yes
+      weibo: yes
+      instapaper: no
+      vk: no
+      all: ['facebook', 'twitter', 'linkedin', 'weibo', 'instapaper']
+    fontsettings:
+      theme: white
+      family: serif
+      size: 2
+    
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+    before_body: dedication.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
+  dev: "cairo_pdf"
+  
+bookdown::epub_book:
+  stylesheet: style.css
+  cover_image: cover.jpg

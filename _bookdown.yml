@@ -1,0 +1,24 @@
+book_filename: "science-research-writing-cn"
+repo: https://github.com/your-username/science-research-writing-cn
+output_dir: "docs"
+delete_merged_file: true
+edit: https://github.com/your-username/science-research-writing-cn/edit/main/%s
+download: ["pdf", "epub"]
+language:
+  ui:
+    chapter_name: "第 "
+    appendix_name: "附录 "
+  label:
+    fig: "图 "
+    tab: "表 "
+    eq: "公式 "
+    thm: "定理 "
+    lem: "引理 "
+    def: "定义 "
+    cor: "推论 "
+    prp: "命题 "
+    exm: "例子 "
+    exr: "练习 "
+    proof: "证明"
+    remark: "注"
+    solution: "解"
