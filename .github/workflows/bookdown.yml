@@ -53,7 +53,7 @@ jobs:
           libtiff5-dev \
           libjpeg-dev
         
-    - name: Install R dependencies  # 修复：添加 curl（sysfonts 依赖）
+    - name: Install R dependencies  # 已包含 curl 等
       run: |
         R -e "install.packages(c('bookdown', 'rmarkdown', 'knitr', 'htmlwidgets', 'ggplot2', 'showtext', 'sysfonts', 'showtextdb', 'curl'), repos = 'https://cran.rstudio.com/')"
         
@@ -61,13 +61,28 @@ jobs:
       run: |
         R -e "bookdown::render_book('index.Rmd', 'bookdown::gitbook')"
         
+    - name: Verify output directory  # 调试：检查 docs/ 是否存在
+      run: |
+        echo "Current directory contents:"
+        ls -la
+        echo "Checking docs directory:"
+        if [ -d "docs" ]; then
+          echo "docs exists! Contents:"
+          ls -la docs/
+        else
+          echo "ERROR: docs does NOT exist!"
+          echo "Available directories:"
+          ls -la | grep '^d'
+          exit 1  # 如果不存在，提前失败，便于调试
+        fi
+        
     - name: Setup Pages
       uses: actions/configure-pages@v4
       
-    - name: Upload artifact
+    - name: Upload artifact  # 修复：路径改为 docs/
       uses: actions/upload-pages-artifact@v3
       with:
-        path: './_book'  # 匹配 bookdown 默认输出
+        path: './docs'
         
   deploy:
     environment:
