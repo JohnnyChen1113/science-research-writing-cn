@@ -11,6 +11,10 @@ if (!require(sysfonts)) {
   install.packages("sysfonts")
   library(sysfonts)
 }
+
+if (!require("ggplot2", quietly = TRUE)) {
+  install.packages("ggplot2", repos = "https://cran.rstudio.com/")
+}
 library(ggplot2)
 
 # 启用 showtext
