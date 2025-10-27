@@ -1,72 +1,124 @@
-# 介绍 {#introduction}
+# 如何写introduction {#introduction}
 
-> "写作就是思考在纸上的体现。" —— William Zinsser
 
-学术写作是科学研究过程中不可或缺的一环。无论你的研究多么出色，如果无法清晰、准确地表达出来，研究的价值就大打折扣。本章将为你介绍学术写作的基本原则和重要性。
+```{r chinese-plot-showtext, echo=FALSE, message=FALSE, warning=FALSE, fig.cap=" 学术论文的结构", fig.width=10, fig.height=12}
+# 安装并加载必要的包
+if (!require(showtext)) {
+  install.packages("showtext")
+  library(showtext)
+}
+if (!require(sysfonts)) {
+  install.packages("sysfonts")
+  library(sysfonts)
+}
+library(ggplot2)
 
-## 为什么学术写作如此重要？ {#why-academic-writing}
+# 启用 showtext
+showtext_auto()
 
-在当今的学术环境中，研究人员面临着前所未有的发表压力。期刊编辑和同行评审专家每天都要处理大量的投稿，他们往往只用几分钟就决定一篇论文的命运。在这种情况下，清晰、简洁、有说服力的写作技能变得至关重要。
+# 从Google Fonts下载中文字体
+font_add_google("Noto Sans SC", "chinese")
 
-### 学术写作的核心目标
+# 创建中文版论文结构图
+p_cn <- ggplot() +
+  coord_fixed(ratio = 1) +
+  xlim(-1, 7) +
+  ylim(-1, 7) +
+  theme_void() +
+  theme(
+    plot.margin = margin(20, 20, 20, 20),
+    text = element_text(family = "chinese")
+  )
 
-学术写作的主要目标包括：
+# 1. 标题
+p_cn <- p_cn + 
+  geom_rect(aes(xmin = 0, xmax = 6, ymin = 5.5, ymax = 6.2), 
+            fill = "white", color = "black", size = 1.2) +
+  annotate("text", x = 3, y = 5.85, label = "标题", 
+           size = 6, fontface = "bold", family = "chinese")
 
-1. **清晰传达研究发现**：让读者能够快速理解你的研究内容和贡献
-2. **建立学术信誉**：通过专业的表达方式展示你的学术水平
-3. **促进学术交流**：为同行提供可复制和可验证的研究信息
-4. **推动知识进步**：将你的发现融入到更大的学术对话中
+# 2. 摘要
+p_cn <- p_cn + 
+  geom_rect(aes(xmin = 1.2, xmax = 4.8, ymin = 4.8, ymax = 5.3), 
+            fill = "white", color = "black", size = 1) +
+  annotate("text", x = 3, y = 5.05, label = "摘要", 
+           size = 5, fontface = "bold", family = "chinese")
 
-## 学术写作的特点 {#characteristics}
+# 3. 引言 - 倒梯形，灰色填充
+introduction_x <- c(0.3, 5.7, 4.7, 1.3, 0.3)
+introduction_y <- c(4.5, 4.5, 3.6, 3.6, 4.5)
+p_cn <- p_cn + 
+  geom_polygon(aes(x = introduction_x, y = introduction_y), 
+               fill = "gray70", color = "black", size = 1) +
+  annotate("text", x = 3, y = 4.05, label = "引言", 
+           size = 5, fontface = "bold", family = "chinese")
 
-学术写作与其他类型的写作有着显著的区别：
+# 4. 方法
+p_cn <- p_cn + 
+  geom_rect(aes(xmin = 1.3, xmax = 4.7, ymin = 2.7, ymax = 3.6), 
+            fill = "white", color = "black", size = 1) +
+  annotate("text", x = 3, y = 3.15, label = "方法", 
+           size = 5, fontface = "bold", family = "chinese")
 
-### 客观性（Objectivity）
-学术写作要求作者保持客观立场，基于证据而非个人观点进行论述。避免使用情感化语言，而是依靠逻辑和数据来支撑论点。
+# 5. 结果
+p_cn <- p_cn + 
+  geom_rect(aes(xmin = 1.3, xmax = 4.7, ymin = 1.8, ymax = 2.7), 
+            fill = "white", color = "black", size = 1) +
+  annotate("text", x = 3, y = 2.25, label = "结果", 
+           size = 5, fontface = "bold", family = "chinese")
 
-### 精确性（Precision）
-每个词汇的选择都要准确，避免模糊或歧义的表达。专业术语的使用要规范统一。
+# 6. 讨论 - 梯形
+discussion_x <- c(1.3, 4.7, 5.7, 0.3, 1.3)
+discussion_y <- c(1.8, 1.8, 0.9, 0.9, 1.8)
+p_cn <- p_cn + 
+  geom_polygon(aes(x = discussion_x, y = discussion_y), 
+               fill = "white", color = "black", size = 1) +
+  annotate("text", x = 3, y = 1.35, label = "讨论", 
+           size = 5, fontface = "bold", family = "chinese")
 
-### 简洁性（Conciseness）
-用最少的词汇表达最完整的意思。避免冗余和重复，让每个句子都有存在的价值。
+# 7. 结论
+p_cn <- p_cn + 
+  geom_rect(aes(xmin = 1.2, xmax = 4.8, ymin = 0.2, ymax = 0.7), 
+            fill = "white", color = "black", size = 1) +
+  annotate("text", x = 3, y = 0.45, label = "结论*", 
+           size = 5, fontface = "bold", family = "chinese")
 
-### 逻辑性（Logic）
-文章结构要清晰，论证要有条理，从前提到结论的推理过程要经得起推敲。
+# 8. 图注
+p_cn <- p_cn + 
+  annotate("text", x = 3, y = -0.3, 
+           label = "图 1.1  学术论文的结构", 
+           size = 4, hjust = 0.5, family = "chinese")
 
-## 常见的写作挑战 {#common-challenges}
+print(p_cn)
+```
 
-非英语母语作者在学术写作中经常遇到以下挑战：
 
-### 语言层面的挑战
-- 语法错误和表达不地道
-- 词汇选择不够精确
-- 句式结构过于复杂或过于简单
+> “令人遗憾的是，在这样一个环境中，许多人为了自己的职业发展必须发表论文[...]，但人们却只投入有限的精力去理解书面论文的结构。这本来是一个完全可以传授的主题。潜在的作者需要详细的、基于证据的指导，而这种指导可以通过研究那些在顶级期刊上成功发表的论文结构来获得。”
 
-### 结构层面的挑战  
-- 文章逻辑不够清晰
-- 段落之间缺乏有效连接
-- 论证过程不够完整
+## Introduction的结构和内容
+正如你所见，图1.1是对称的。这是因为引言中的许多内容——通常以相反的顺序出现——也会出现在讨论部分。例如：
 
-### 内容层面的挑战
-- 研究意义阐述不充分
-- 文献综述不够全面
-- 研究方法描述不够详细
+在引言的开头，你写一个开场句，使读者能够“进入”或开始你的论文/学位论文；在讨论的结尾，你通过找到一种合适的方式来“退出”。
+在引言中，你通常呈现过去或当前关于该主题的研究和/或知识；在讨论中，你展示你的研究如何贡献于这些研究或推进这些知识。
+在引言的某个点，你陈述你的研究所关注的特定问题，或识别现有研究中的空白，该空白将在你的论文中得到填补；在讨论中，你讨论在多大程度上解决了该问题。
+在引言的结尾，你需要使读者能够进入中心部分（通常是方法和/或结果部分）；在中心部分的结尾，你需要使读者能够进入讨论部分。
 
-## 本书的学习方法建议 {#learning-approach}
+请注意，引言向中心报告部分逐渐收窄，而讨论则在其后逐渐展开。这代表了引言和讨论中信息组织的方式：在引言中，你从相当一般的层面开始，逐渐将焦点收窄到你自己的研究上，而在讨论中则恰恰相反。
 
-为了最大化学习效果，建议采用以下方法：
 
-1. **主动练习**：不要只是阅读，要结合自己的研究进行写作练习
-2. **分析范例**：仔细研读优秀论文的写作方式和表达技巧
-3. **寻求反馈**：请导师、同事或专业编辑对你的写作提出建议
-4. **持续改进**：将学到的技巧应用到实际写作中，不断完善
+## 构建模型
 
-## 小结 {#chapter-summary}
+引言的结构在大多数研究领域中相似，并且内容直接与结构相连。本单元将向你展示如何构建和使用一个引言模型，该模型回答以下三个问题：
 
-学术写作是一项可以学习和改进的技能。通过理解学术写作的特点和要求，识别常见的挑战，并采用有效的学习方法，你可以显著提高自己的写作水平，为学术生涯奠定坚实的基础。
+* 作家通常如何开始引言？
+* 引言中通常包含什么内容，以及以何种顺序？
+* 作家通常如何结束引言？
 
-在接下来的章节中，我们将深入探讨学术写作的具体技巧和方法，帮助你逐步掌握这一重要技能。
 
----
+### 练习1：通过逆向工程构建简单模型
 
-> **练习提示**：在继续阅读之前，请思考一下你在学术写作中遇到的主要挑战是什么？将这些挑战记录下来，在学习本书的过程中重点关注相关的解决方法。
+使用第xvii–xviii页讨论的逆向工程方法，查看下面的第一个引言，并为每个句子写一个简短的描述，说明作家在每个句子中做了什么。请注意，你不是在描述或总结句子所说内容（句子的内容）；相反，你是在分析句子在做什么（句子的功能）。识别句子功能的一种方法是查看主要动词的时态。该动词时态通常用于什么？该动词是否与前一句的时态相同？如果不同，为什么作家改变了时态？
+
+请记住，你的模型只有在能够转移到其他引言时才有用，因此不要包含如“polymer”等内容词，否则你将无法使用该模型生成自己研究文章的引言。
+
+保持你的描述简洁；句子7已为你完成，作为你应达到的细节水平的指南。一旦你完成了第一个引言的描述，请通过将其应用于1.3.1节中的引言，然后应用于你的目标文章中的引言，来测试和调整你的模型。
